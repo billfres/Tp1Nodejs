@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/billfres/Tp1Nodejs/issues"
   },
-  "homepage": "https://github.com/billfres/Tp1Nodejs#readme"
+  "homepage": "https://github.com/billfres/Tp1Nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
