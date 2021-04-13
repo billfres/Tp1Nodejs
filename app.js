@@ -3,6 +3,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+
+//importation du package mongoose
+const mongoose = require('mongoose');
+
+//configuration de la BD
+mongoose.connect('mongodb+srv://fresneltest1:fresneltest1@cluster0.xxdoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 /*
 Ces headers permettent :
     d'accéder à notre API depuis n'importe quelle origine ( '*' ) ;
