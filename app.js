@@ -2,6 +2,9 @@ const express = require('express');
 //importation du package body-parser
 const bodyParser = require('body-parser');
 
+//importation du model thing
+const Thing = require('./models/Thing');
+
 const app = express();
 
 //importation du package mongoose
@@ -28,14 +31,18 @@ app.use((req, res, next) => {
   });
 
 //définissons sa fonction json comme middleware global pour votre application, juste après avoir défini les headers de la réponse :
+//app.use(body-parser.json());
 app.use(express.json());
 
 //ce middleware ne traite que les requêtes de types POST
 app.post('/api/stuff', (req, res, next) => {
-    console.log(req.body);
-    res.status(201).json({
-      message: 'Objet créé !'
+    delete req.body._id;
+    const thing = new Thing({
+      ...req.body
     });
+    thing.save()
+      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+      .catch(error => res.status(400).json({ error }));
   });
 
 app.use('/api/stuff', (req, res, next) => {
