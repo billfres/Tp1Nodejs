@@ -46,7 +46,7 @@ app.post('/api/stuff', (req, res, next) => {
   });
 
 //notre route de get pour reccuperer les données: get or use
-app.use('/api/stuff', (req, res, next) => {
+app.get('/api/stuff', (req, res, next) => {
     Thing.find()
     .then(things => res.status(200).json(things))
     .catch(error => res.status(400).json({ error }));
