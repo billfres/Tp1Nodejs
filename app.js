@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 //importation du package mongoose
 const mongoose = require('mongoose');
 
-//importation du routeur
+//importation des routeurs
 const stuffRoutes = require('./routes/stuff');
+const userRoutes = require('./routes/user');
 
 
 const app = express();
@@ -38,5 +39,7 @@ app.use(express.json());
 
 //completion de la route avec staffRoutes
 app.use('/api/stuff', stuffRoutes);
+//completion de la route avec authRoutes
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
