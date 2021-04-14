@@ -1,6 +1,9 @@
 //pour crypter les mots de passe 
 const bcrypt = require('bcrypt');
 
+//pour vérifier les tokens d'authentification
+const jwt = require('jsonwebtoken');
+
 const user = require('../models/User');
 
 exports.signup = (req, res, next) => {
@@ -30,7 +33,11 @@ exports.signup = (req, res, next) => {
             }
             res.status(200).json({
               userId: user._id,
-              token: 'TOKEN'
+              token: jwt.sign(
+                { userId: user._id },
+                'RANDOM_TOKEN_SECRET',
+                { expiresIn: '24h' }
+              )
             });
           })
           .catch(error => res.status(500).json({ error }));
