@@ -1,3 +1,6 @@
+//pour crypter les mots de passe 
+const bcrypt = require('bcrypt');
+
 const user = require('../models/User');
 
 exports.signup = (req, res, next) => {
