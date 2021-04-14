@@ -16,7 +16,8 @@ const app = express();
 //configuration de la BD
 mongoose.connect('mongodb+srv://fresneltest1:fresneltest1@cluster0.xxdoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
-    useUnifiedTopology: true })
+    useUnifiedTopology: true,
+    useCreateIndex:true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
