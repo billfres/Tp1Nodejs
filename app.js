@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 //importation du package mongoose
 const mongoose = require('mongoose');
 
+//importation du chemin pour resoudre le problème de l'image
+const path = require('path');
+
 //importation des routeurs
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
@@ -38,6 +41,8 @@ app.use((req, res, next) => {
 //app.use(body-parser.json());
 app.use(express.json());
 
+//correction du lien de stockage d'images
+app.use('/images', express.static(path.join(__dirname, 'images')));
 //completion de la route avec staffRoutes
 app.use('/api/stuff', stuffRoutes);
 //completion de la route avec authRoutes
