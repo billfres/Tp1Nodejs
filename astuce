@@ -1,0 +1,15 @@
+
+
+se localiser dans le dossier frontend et taper:
+ng server
+
+se localiser dans le dossier backend et taper:
+nodemon serve
+
+dans un navigateur
+http://localhost:4200/part-four/all-stuff
+
+dans postman
+http://localhost:3000/part-one/all-stuff
+
+
